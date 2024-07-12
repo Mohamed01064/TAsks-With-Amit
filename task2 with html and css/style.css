@@ -1,0 +1,98 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #131010;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    background-color:#181818;
+    margin-bottom: 0px;
+}
+
+.logo img {
+    height: 50px;
+    float: left;
+    font-size: 40px;
+    margin-left: 100px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right: 280x;
+}
+
+nav ul li {
+    margin-right: 25px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.container{
+    width: 100%;
+    height: auto;
+    background-color: #1b1b1b;
+    display: flex;
+    justify-content: center;
+
+}
+.container-style{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 70px 0;
+}
+.content{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    padding-left: 50px;
+    margin-right: 20px;
+}
+.cont{
+    color: white;
+    font-family: "Urbanist", sans-serif;
+    line-height: 60px;
+    font-size: 50px;
+
+}
+.sp{
+    color: #b79632;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 880px;
+    font-size: 70px;
+}
+.img-style{
+    width: 450px;
+    height: 300px;
+    border-radius: 30px;
+
+
+}
+.img{
+border-style: none;
+}
+h2{
+    font-family: "Urbanist", sans-serif;
+    font-size: 70px;
+    color: #b79632;
+    text-align: center;
+}
+
+
+
