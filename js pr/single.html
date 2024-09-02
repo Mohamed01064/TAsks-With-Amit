@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .navbar {
+            background-color: #232f3e;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .navbar.dark-mode {
+            background-color: #1c1c1c;
+        }
+        .navbar-scrolled {
+            background-color: #131921;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-brand {
+            font-size: 1.75rem;
+            color: #fff;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 1rem;
+            padding: 10px 15px;
+            transition: color 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ff9900;
+        }
+        .product-container {
+            display: flex;
+            padding: 40px;
+            gap: 20px;
+        }
+        .product-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .product-images img {
+            max-width: 100%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s;
+        }
+        .product-images img:hover {
+            border-color: #ff9900;
+        }
+        .product-large-image {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ddd;
+        }
+        .product-large-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product-details {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-details h2 {
+            color: #232f3e;
+        }
+        .product-details p {
+            color: #555;
+        }
+        .product-price {
+            font-size: 1.5rem;
+            color: #b12704;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 100;
+            font-size: 24px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .back-to-top:hover {
+            background-color: #e67e22;
+            transform: scale(1.1);
+        }
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+        .dark-mode-toggle:hover {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">E-commerce Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./product.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./single.html">single product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Product Details -->
+    <div class="container">
+        <div class="product-container">
+            <!-- Product Images -->
+            <div class="product-images">
+                <img src="https://picsum.photos/200/200?random=1" alt="Small Image 1" onclick="changeImage('https://picsum.photos/600/600?random=1')">
+                <img src="https://picsum.photos/200/200?random=2" alt="Small Image 2" onclick="changeImage('https://picsum.photos/600/600?random=2')">
+                <img src="https://picsum.photos/200/200?random=3" alt="Small Image 3" onclick="changeImage('https://picsum.photos/600/600?random=3')">
+                <img src="https://picsum.photos/200/200?random=4" alt="Small Image 4" onclick="changeImage('https://picsum.photos/600/600?random=4')">
+            </div>
+            <!-- Large Image -->
+            <div class="product-large-image">
+                <img id="largeImage" src="https://picsum.photos/600/600?random=1" alt="Large Product Image">
+            </div>
+            <!-- Product Details -->
+            <div class="product-details">
+                <h2 id="productName">Product Name</h2>
+                <p id="productDescription">This is a detailed description of the product. It includes all the essential features, benefits, and information that a customer would want to know.</p>
+                <p class="product-price" id="productPrice">$99.99</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="darkModeToggle" class="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Function to change the large image
+        function changeImage(imageUrl) {
+            document.getElementById('largeImage').src = imageUrl;
+        }
+
+        // Navbar changes on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const elements = document.querySelectorAll('.navbar');
+            elements.forEach(el => el.classList.toggle('dark-mode'));
+        });
+
+        // Fetch product data from Fake API
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('https://fakestoreapi.com/products/1')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('productName').textContent = data.title;
+                    document.getElementById('productDescription').textContent = data.description;
+                    document.getElementById('productPrice').textContent = `$${data.price}`;
+                })
+                .catch(error => console.error('Error fetching product data:', error));
+        });
+    </script>
+</body>
+</html>
